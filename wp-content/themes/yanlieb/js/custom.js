@@ -50,14 +50,16 @@ const animateLogo = () => {
     reorganizeLogo();
     const logoWords = document.querySelectorAll(".site-title a .logo-word");
     if (Boolean(logoWords)) {
-        logoWords.forEach(word => {
-            let logoLetters = word.querySelectorAll(".letter");
-            logoLetters.forEach((letter, index) => {
-                setTimeout(() => {
-                    letter.classList.add("animated");
-                }, 250 * index);
+        setTimeout(() => {
+            logoWords.forEach(word => {
+                let logoLetters = word.querySelectorAll(".letter");
+                logoLetters.forEach((letter, index) => {
+                    setTimeout(() => {
+                        letter.classList.add("animated");
+                    }, 250 * index);
+                })
             })
-        })
+        }, 500)
 
 
     }

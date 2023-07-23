@@ -766,7 +766,7 @@ button[title="primary-menu"] span {
 	position: inherit;
 }
 
-#masthead .site-title > a .logo-word:not(:last-child) .letter.animated {
+#masthead .site-title > a .logo-word:not(:last-child) .letter:first-child, #masthead .site-title > a .logo-word:not(:last-child) .letter.animated {
 	border-bottom: 1px solid black;
 }
 

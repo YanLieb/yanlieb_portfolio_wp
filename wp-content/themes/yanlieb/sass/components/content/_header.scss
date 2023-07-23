@@ -64,8 +64,12 @@
                 }
             }
 
-            .logo-word:not(:last-child) .letter.animated {
-                border-bottom: 1px solid black;
+            .logo-word:not(:last-child) .letter {
+
+                &:first-child,
+                &.animated {
+                    border-bottom: 1px solid black;
+                }
             }
 
 
