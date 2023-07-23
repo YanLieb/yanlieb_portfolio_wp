@@ -48,6 +48,13 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	- Alignments
 
 --------------------------------------------------------------*/
+@font-face {
+	font-family: JFAurlenRegular;
+	src: url(assets/fonts/JFAurlen-Regular.otf);
+	font-weight: normal;
+	font-style: normal;
+}
+
 /*--------------------------------------------------------------
 # Generic
 --------------------------------------------------------------*/
@@ -633,10 +640,11 @@ textarea {
 #site-navigation {
 	position: fixed;
 	bottom: 0;
-	left: 0;
 	width: 100vw;
 	padding: 10px;
 	z-index: 1;
+	display: flex;
+	justify-content: flex-end;
 	background: rgba(0, 0, 0, 0.9);
 	backdrop-filter: blur(5px);
 }
@@ -708,15 +716,62 @@ button[title="primary-menu"] span {
 	text-align: center;
 }
 
-#masthead #site-navigation {
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	width: 100vw;
-	padding: 10px;
-	z-index: 1;
-	background: rgba(0, 0, 0, 0.9);
-	backdrop-filter: blur(5px);
+#masthead .site-title,
+#masthead .site-description {
+	margin: 0.5rem 0;
+}
+
+#masthead .site-title a,
+#masthead .site-description a {
+	text-decoration: none;
+	color: unset;
+}
+
+#masthead .site-title {
+	font-family: JFAurlenRegular, serif;
+	font-size: 5rem;
+	width: fit-content;
+	margin: auto;
+}
+
+#masthead .site-title > a {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	opacity: 0;
+	transition: opacity 250ms ease-in;
+	min-height: 240px;
+}
+
+#masthead .site-title > a .original-text {
+	display: none;
+}
+
+#masthead .site-title > a .logo-word {
+	position: relative;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+}
+
+#masthead .site-title > a .letter:not(:first-child) {
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	transition: all ease-in-out 250ms;
+}
+
+#masthead .site-title > a .letter:not(:first-child).animated {
+	opacity: 1;
+	position: inherit;
+}
+
+#masthead .site-title > a .logo-word:not(:last-child) .letter.animated {
+	border-bottom: 1px solid black;
+}
+
+#masthead .site-title > a .site-description {
+	font-size: 2rem;
 }
 
 /* Comments

@@ -14,7 +14,64 @@
 
         * {
             text-align: center;
-            font-size: 40px;
+        }
+    }
+
+    .site-title,
+    .site-description {
+        margin: 0.5rem 0;
+
+        a {
+            text-decoration: none;
+            color: unset;
+        }
+    }
+
+    .site-title {
+        font-family: $font-serif;
+        font-size: 5rem;
+        width: fit-content;
+        margin: auto;
+
+        >a {
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 250ms ease-in;
+            min-height: 240px;
+
+            .original-text {
+                display: none;
+            }
+
+            .logo-word {
+                position: relative;
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: center;
+            }
+
+            .letter:not(:first-child) {
+                opacity: 0;
+                position: absolute;
+                top: 0;
+                transition: all ease-in-out 250ms;
+
+                &.animated {
+                    opacity: 1;
+                    position: inherit;
+                }
+            }
+
+            .logo-word:not(:last-child) .letter.animated {
+                border-bottom: 1px solid black;
+            }
+
+
+            .site-description {
+                font-size: 2rem;
+            }
         }
     }
 }
