@@ -44,13 +44,14 @@
 				$yanlieb_description = get_bloginfo('description', 'display');
 				if ($yanlieb_description || is_customize_preview()) :
 				?>
-					<p class="site-description"><?php echo $yanlieb_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
-												?></p>
+					<p class="site-description"><?php echo $yanlieb_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
 				<?php endif; ?>
 			</div><!-- .site-branding -->
 
 			<nav id="site-navigation" class="main-navigation">
-				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e('Primary Menu', 'yanlieb'); ?></button>
+				<button class="menu-toggle" type="button" title="primary-menu" aria-controls=" primary-menu" aria-expanded="false">
+					<span></span><span></span><span></span>
+				</button>
 				<?php
 				wp_nav_menu(
 					array(

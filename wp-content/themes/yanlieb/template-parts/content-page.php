@@ -31,6 +31,22 @@
 	</div><!-- .entry-content -->
 
 	<?php
+	if (get_field('web_skills')) :
+		$web_skills = get_field('web_skills');
+		foreach ($web_skills as $skill) :
+	?>
+			<div id="web_skills">
+				<div class="skill">
+					<p skill-name><?php echo $skill['skill_name']; ?></p>
+					<span class="skill-level"><?php echo $skill['skill_level']; ?></span>
+				</div>
+			</div><!-- #web_skills -->
+	<?php
+		endforeach;
+	endif;
+	?>
+
+	<?php
 	if (get_field('projects')) :
 		$projects = get_field('projects');
 
@@ -49,13 +65,22 @@
 						<?php echo $project->post_content; ?>
 					</div>
 				</div>
-			</div>
+			</div><!-- #portfolio_projects -->
 
-	<?php endforeach;
+	<?php
+		endforeach;
 	endif;
 	?>
 
-
+	<?php
+	$contact_form = do_shortcode('[contact-form-7 id="86" title="Contact"]');
+	if ($contact_form) : ?>
+		<div id="contact">
+			<?php echo $contact_form; ?>
+		</div><!-- #contact_form -->
+	<?php
+	endif;
+	?>
 
 	<?php if (get_edit_post_link()) : ?>
 		<footer class="entry-footer">
