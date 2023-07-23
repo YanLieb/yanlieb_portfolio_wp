@@ -60,7 +60,5 @@ const animateLogo = () => {
                 })
             })
         }, 500)
-
-
     }
 }
