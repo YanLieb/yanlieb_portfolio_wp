@@ -1,10 +1,12 @@
 document.addEventListener('DOMContentLoaded', _ => {
     animateLogo();
+    headerObserver();
 });
 const reorganizeLogo = () => {
     const logo = document.querySelector(".site-title a");
     if (Boolean(logo)) {
         logo.style.opacity = "1";
+
         //place content into a span to remove the span later on
         const originalText = document.createElement("span");
         originalText.classList.add("original-text");
@@ -56,9 +58,45 @@ const animateLogo = () => {
                 logoLetters.forEach((letter, index) => {
                     setTimeout(() => {
                         letter.classList.add("animated");
-                    }, 250 * index);
+                    }, 100 * index);
                 })
             })
-        }, 500)
+        }, 2500)
     }
 }
+
+//IntersectionObserver
+
+const headerObserver = _ => {
+    const options = {
+        root: null,
+        rootMargin: "0px 0px -50px 0px",
+        threshold: 0,
+    };
+
+    let observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('isVisible');
+            }
+        });
+    }, options);
+
+    let elementsToObserve = document.querySelectorAll(".site-branding p");
+    if (Boolean(elementsToObserve)) {
+        elementsToObserve.forEach(element => {
+            observer.observe(element);
+        });
+    }
+};
+
+setTimeout(() => {
+    const recatpcha = document.querySelector('.grecaptcha-badge');
+    const contactDiv = document.querySelector('#contact');
+    if (Boolean(contactDiv)) {
+        contactDiv.querySelector('.wpcf7').classList.add('container');
+        if (Boolean(recatpcha)) {
+            contactDiv.append(recatpcha);
+        }
+    }
+}, 500);

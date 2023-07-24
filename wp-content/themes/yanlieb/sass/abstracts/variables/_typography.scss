@@ -7,6 +7,9 @@ $font__line-height-body: 1.5;
 $font__line-height-pre: 1.6;
 
 $font-serif: JFAurlenRegular, serif;
+$font-mono: CutiveMonoRegular, monospace;
+$font-sans: FiraSans, sans-serif;
+$font-italic: FiraSansItalic, italic;
 
 
 @font-face {
@@ -14,4 +17,25 @@ $font-serif: JFAurlenRegular, serif;
     src: url(assets/fonts/JFAurlen-Regular.otf);
     font-weight: normal;
     font-style: normal;
+}
+
+@font-face {
+    font-family: CutiveMonoRegular;
+    src: url(assets/fonts/CutiveMono-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: FiraSans;
+    src: url(assets/fonts/FiraSans-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: FiraSansItalic;
+    src: url(assets/fonts/FiraSan-Italic.ttf);
+    font-weight: normal;
+    font-style: italic;
 }

@@ -5,10 +5,15 @@ select,
 optgroup,
 textarea {
 	color: $color__text-main;
-	font-family: $font__main;
+	font-family: $font-sans;
 	font-size: 1rem;
 	line-height: $font__line-height-body;
 }
 
 @import "headings";
 @import "copy";
+
+p,
+a {
+	font-family: $font-sans;
+}

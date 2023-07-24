@@ -21,7 +21,7 @@
 
 	<?php yanlieb_post_thumbnail(); ?>
 
-	<div class="entry-content">
+	<div class="entry-content container">
 		<?php
 		the_content();
 
@@ -37,12 +37,13 @@
 	<?php
 	if (get_field('web_skills')) :
 		$web_skills = get_field('web_skills');
-		foreach ($web_skills as $skill) :
+		foreach ($web_skills as $key => $skill) :
 	?>
-			<div id="web_skills">
+			<div id="web_skills" class="container">
 				<div class="skill">
-					<p skill-name><?php echo $skill['skill_name']; ?></p>
-					<span class="skill-level"><?php echo $skill['skill_level']; ?></span>
+					<?php $skill_id = $skill['skill_name'] . "-" . $key; ?>
+					<label for="<?php echo $skill_id; ?>" class="skill-name"><?php echo $skill['skill_name']; ?></label>
+					<progress id="<?php echo $skill_id; ?>" class="skill-level" max="100" value="<?php echo $skill['skill_level']; ?>"><?php echo $skill['skill_level']; ?></progress>
 				</div>
 			</div><!-- #web_skills -->
 	<?php
@@ -57,7 +58,7 @@
 		foreach ($projects as $project) :
 			$featured_img_url = get_the_post_thumbnail_url($project->ID, 'medium');
 	?>
-			<div id="portfolio_projects">
+			<div id="portfolio_projects" class="container">
 				<div class="project">
 					<p class="project-title h3">
 						<?php echo $project->post_title; ?>

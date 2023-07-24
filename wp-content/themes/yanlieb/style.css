@@ -55,6 +55,27 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	font-style: normal;
 }
 
+@font-face {
+	font-family: CutiveMonoRegular;
+	src: url(assets/fonts/CutiveMono-Regular.ttf);
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: FiraSans;
+	src: url(assets/fonts/FiraSans-Regular.ttf);
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: FiraSansItalic;
+	src: url(assets/fonts/FiraSan-Italic.ttf);
+	font-weight: normal;
+	font-style: italic;
+}
+
 /*--------------------------------------------------------------
 # Generic
 --------------------------------------------------------------*/
@@ -395,7 +416,7 @@ select,
 optgroup,
 textarea {
 	color: #404040;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	font-family: FiraSans, sans-serif;
 	font-size: 1rem;
 	line-height: 1.5;
 }
@@ -459,6 +480,11 @@ ins {
 
 big {
 	font-size: 125%;
+}
+
+p,
+a {
+	font-family: FiraSans, sans-serif;
 }
 
 /* Elements
@@ -628,15 +654,22 @@ textarea {
 /*--------------------------------------------------------------
 # Layouts
 --------------------------------------------------------------*/
+.no-sidebar .site {
+	display: grid;
+	grid-template-columns: auto;
+	grid-template-areas: "header" "main" "footer";
+}
+
+.no-sidebar .container {
+	width: 90vw;
+	margin: auto;
+}
+
 /*--------------------------------------------------------------
 # Components
 --------------------------------------------------------------*/
 /* Navigation
 --------------------------------------------- */
-#wpadminbar {
-	display: none;
-}
-
 #site-navigation {
 	position: fixed;
 	bottom: 0;
@@ -651,7 +684,6 @@ textarea {
 
 button[title="primary-menu"] {
 	border: unset;
-	padding: 5px;
 	background-color: unset;
 	display: flex;
 	flex-flow: column nowrap;
@@ -668,6 +700,18 @@ button[title="primary-menu"] span {
 
 .menu-main-menu-container {
 	display: none;
+}
+
+#contact {
+	position: relative;
+	overflow-x: hidden;
+}
+
+#contact .grecaptcha-badge {
+	opacity: 0.5;
+	transform: scale(1);
+	position: absolute !important;
+	bottom: 0;
 }
 
 /* Posts and pages
@@ -710,6 +754,7 @@ button[title="primary-menu"] span {
 	display: flex;
 	flex-flow: column;
 	justify-content: center;
+	overflow: hidden;
 }
 
 #masthead .site-branding * {
@@ -728,18 +773,19 @@ button[title="primary-menu"] span {
 }
 
 #masthead .site-title {
-	font-family: JFAurlenRegular, serif;
 	font-size: 5rem;
 	width: fit-content;
 	margin: auto;
+	transform: translateY(-10px);
+	opacity: 0;
+	transition: transform 300ms ease-in, opacity 500ms ease-in;
 }
 
 #masthead .site-title > a {
+	font-family: JFAurlenRegular, serif !important;
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: center;
-	opacity: 0;
-	transition: opacity 250ms ease-in;
 	min-height: 240px;
 }
 
@@ -758,7 +804,7 @@ button[title="primary-menu"] span {
 	opacity: 0;
 	position: absolute;
 	top: 0;
-	transition: all ease-in-out 250ms;
+	transition: all ease-in-out 300ms;
 }
 
 #masthead .site-title > a .letter:not(:first-child).animated {
@@ -770,8 +816,18 @@ button[title="primary-menu"] span {
 	border-bottom: 1px solid black;
 }
 
-#masthead .site-title > a .site-description {
-	font-size: 2rem;
+#masthead .site-description {
+	font-family: CutiveMonoRegular, monospace;
+	display: block;
+	font-size: 1.5rem;
+	transform: translateY(10px);
+	opacity: 0;
+	transition: transform 700ms ease-in, opacity 900ms ease-in;
+}
+
+#masthead .isVisible {
+	transform: translateY(0);
+	opacity: 1;
 }
 
 /* Comments
